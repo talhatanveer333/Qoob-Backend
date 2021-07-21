@@ -14,7 +14,8 @@ if (!config.get('jwtPrivateKey')) {
 }
 
 // Middleware
-mongoose.connect('mongodb://localhost/qoob')
+mongoose.connect('mongodb+srv://talha:admin@cluster0.5icx5.mongodb.net/qoobData?retryWrites=true&w=majority',
+    { useUnifiedTopology: true, })
     .then(() => console.log('Connected to the database....'))
     .catch((err) => console.log('Connection error!', err));
 
