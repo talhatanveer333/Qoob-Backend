@@ -1,7 +1,7 @@
 const express=require('express');
 const router=express.Router();
 const bcrypt=require('bcrypt');
-const Joi=require('Joi');
+const Joi=require('joi');
 const {User}=require('../models/User');
 
 router.post('/', async (req, res) => {
