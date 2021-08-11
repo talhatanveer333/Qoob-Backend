@@ -1,8 +1,9 @@
 const express=require('express');
 const router=express.Router();
+const _=require('lodash');
+
 const {Qoob, validate}=require('../models/qoob');
 const authorization=require('../middleware/authorization');
-const _=require('lodash');
 
 router.post('/', authorization, async (req, res) =>{
     const {error}=validate(req.body);

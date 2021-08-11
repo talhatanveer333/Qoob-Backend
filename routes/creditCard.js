@@ -1,9 +1,10 @@
 const Express = require('express');
 const router = Express.Router();
-const { CreditCard, validate } = require('../models/creditCard');
-const authorization = require('../middleware/authorization');
 const _ = require('lodash');
 const bcrypt = require('bcrypt');
+
+const { CreditCard, validate } = require('../models/creditCard');
+const authorization = require('../middleware/authorization');
 
 router.post('/', authorization, async (req, res) => {
     const { error } = validate(req.body);

@@ -6,6 +6,7 @@ const users = require('./routes/user');
 const auth = require('./routes/auth');
 const creditCard = require('./routes/creditCard');
 const qoob = require('./routes/qoob');
+const payment=require('./routes/stripeAccount');
 require('./startup/prod')(app);
 
 if (!config.get('jwtPrivateKey')) {
@@ -14,16 +15,18 @@ if (!config.get('jwtPrivateKey')) {
 }
 
 // Middleware
-mongoose.connect('mongodb+srv://talha:admin@cluster0.5icx5.mongodb.net/qoobData?retryWrites=true&w=majority',
+mongoose.connect('mongodb://localhost:27017/qoob',
     { useUnifiedTopology: true, })
-    .then(() => console.log('Connected to the database....'))
+    .then(() => console.log('Connected to the local database....'))
     .catch((err) => console.log('Connection error!', err));
+
 
 app.use(express.json());
 app.use('/api/users', users);
 app.use('/api/auth', auth);
 app.use('/api/creditcard', creditCard);
 app.use('/api/qoob', qoob);
+app.use('/api/payment', payment);
 
 // Endpoints
 app.get('/', (req, res) => {

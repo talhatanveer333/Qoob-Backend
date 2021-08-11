@@ -67,7 +67,7 @@ userSchema.methods.generateAuthToken= function () {
     return jwt.sign({_id:this._id, isAdmin:this.isAdmin, name:this.firstName+' '+this.lastName, email:this.email}, config.get('jwtPrivateKey'));
 }
 
-const User = mongoose.model('User', userSchema);
+const UserModel = mongoose.model('User', userSchema);
 
 function validateUser(user)
 {
@@ -87,5 +87,5 @@ function validateUser(user)
     return schema.validate(user);
 }
 
-exports.User = User;
+exports.User = UserModel;
 exports.validate = validateUser;
