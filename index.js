@@ -21,14 +21,16 @@ mongoose.connect('mongodb://localhost:27017/qoob',
     .catch((err) => console.log('Connection error!', err));
 
 
+
 app.use(express.json());
+
+// Endpoints
 app.use('/api/users', users);
 app.use('/api/auth', auth);
 app.use('/api/creditcard', creditCard);
 app.use('/api/qoob', qoob);
 app.use('/api/payment', payment);
 
-// Endpoints
 app.get('/', (req, res) => {
     res.send('Qoob backend is running and live!');
 })
